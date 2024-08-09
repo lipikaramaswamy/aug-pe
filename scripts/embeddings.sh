@@ -17,7 +17,9 @@ case $1 in
   --yelp)
     python pre_comp_emb.py --dataset yelp --model_name_or_path 'stsb-roberta-base-v2'
     ;;
-  *)
+    --clinical)
+    python pre_comp_emb.py --dataset clinical --model_name_or_path 'sentence-t5-xl'
+    ;;*)
     echo "Invalid dataset. Available datasets are: --openreview, --pubmed, --yelp"
     exit 1
     ;;

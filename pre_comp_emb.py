@@ -25,7 +25,8 @@ feature_extractor = args.model_name_or_path
 
 data_files = {'pubmed': 'data/pubmed/train.csv',
               'yelp': 'data/yelp/train.csv',
-              'openreview': 'data/openreview/iclr23_reviews_train.csv'
+              'openreview': 'data/openreview/iclr23_reviews_train.csv', 
+              'clinical' : 'data/clinical/train.csv'
               }
 
 all_private_samples, all_private_labels, private_labels_counter, private_labels_indexer = load_data(

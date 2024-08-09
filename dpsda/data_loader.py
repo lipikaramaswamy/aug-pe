@@ -137,5 +137,24 @@ def load_data(dataset="yelp", data_file="data/yelp/train.csv", num_samples=-1, s
             train_labels.append(prompt)
         return train_data, train_labels, prompt_counter, prompt_idexer
 
+    elif dataset == "clinical":
+        prompt_counter = collections.Counter()
+        raw_datasets = load_dataset_with_special(data_file, gen)
+        original_data = sample_dataset(dataset, raw_datasets, label_column_name='',
+                                       sample_size=num_samples, subsample_one_class=subsample_one_class)
+        prompt_idexer = dict()
+        train_data = []
+        train_labels = []
+        for i, line in enumerate(original_data['train']):
+            prompt = f"clinical"
+            prompt_counter[prompt] += 1
+            if prompt not in prompt_idexer.keys():
+                prompt_idexer[prompt] = [i]
+            else:
+                prompt_idexer[prompt].append(i)
+            train_data.append(line['patient'])
+            train_labels.append(prompt)
+        return train_data, train_labels, prompt_counter, prompt_idexer
+
     else:
         raise ValueError(f'Unknown dataset name {dataset}')

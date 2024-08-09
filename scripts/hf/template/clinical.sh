@@ -1,9 +1,9 @@
 mlm_prob=0.6
 var_type="pubmed_rephrase_tone"
 feat_ext="sentence-t5-base"
-length=1024
+length=448
 temperature=1.0
-num_seed_samples=10
+num_seed_samples=2000
 lookahead_degree=0
 k=6 # number of variations
 L=$((k+1))
